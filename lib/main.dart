@@ -8,17 +8,19 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env"); // load env vars
   runApp(const MyApp());
 }
 
 /// ───────────────────────────────────────────────────────────────
 ///  PUT YOUR API KEY HERE (dev only — for production use ephemeral keys)
 /// ───────────────────────────────────────────────────────────────
-const String kOpenAIKey = "sk-API key";
+final String kOpenAIKey = dotenv.env['OPENAI_API_KEY'] ?? '';
 
 /// Model
 const String kRealtimeModel = "gpt-4o-realtime-preview-2024-12-17";

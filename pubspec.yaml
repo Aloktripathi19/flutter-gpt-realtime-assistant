@@ -36,6 +36,7 @@ dependencies:
   http: ^1.1.0               # 🌐 OpenAI API
   audioplayers: ^5.2.1
   permission_handler: ^11.0.1
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
